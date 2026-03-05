@@ -21,9 +21,12 @@ try {
 
     // TODO: Login to GitHub using the provided credentials
     // HINT: Use the 'type' method to input username and password, then click on the submit button
-    await TODO;
-    await TODO;
-    await TODO;
+    const userField = await page.$('#login_field');
+    const passField = await page.$('#password');
+    const submitBtn = await page.$('input[value="Sign in"]')
+    await userField.type(credentials.username);
+    await passField.type(credentials.password);
+    await submitBtn.click();
 
     // Wait for successful login
     await page.waitForSelector('.avatar.circle');
