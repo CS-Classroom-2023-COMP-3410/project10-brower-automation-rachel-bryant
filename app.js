@@ -3,12 +3,18 @@ const fs = require('fs');
 
 // TODO: Load the credentials from the 'credentials.json' file
 // HINT: Use the 'fs' module to read and parse the file
-const credentials = TODO;
+let credentials;
+try {
+  const jsonString = fs.readFileSync('credentials.json', 'utf8');
+  credentials = JSON.parse(jsonString);
+} catch (err) {
+  console.error('Error reading or parsing file: ', err);
+}
 
 (async () => {
     // TODO: Launch a browser instance and open a new page
-    const browser = TODO;
-    const page = TODO;
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
 
     // Navigate to GitHub login page
     await page.goto('https://github.com/login');
